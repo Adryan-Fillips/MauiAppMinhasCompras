@@ -8,6 +8,7 @@
 
             //MainPage = new AppShell();
             MainPage = new NavigationPage(new Views.ListaProduto());
+            //Ter a vista da lista de produtos na página principal
         }
     }
 }
