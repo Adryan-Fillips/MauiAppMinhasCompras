@@ -9,6 +9,6 @@ namespace MauiAppMinhasCompras.Models
         public string Descricao { get; set; }
         public double Quantidade { get; set; }
         public double Preco { get; set; }
-        //Declara a classe produto, e dentro dela declara suas variáveis, como o Id como número, Descrição em String, Quantidade e preço em números também
+        public double Total { get => Quantidade * Preco; }
     }
 }
