@@ -4,18 +4,22 @@
              x:Class="MauiAppMinhasCompras.Views.NovoProduto"
              Title="Novo Produto">
 
+    <!-- Barra de ferramentas com botão de salvar -->
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Salvar" Clicked="ToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
 
     <VerticalStackLayout Spacing="10" Padding="10">
+        <!-- Campo para inserir a descrição do produto -->
         <Label Text="Descrição do Produto:" />
-        <Entry x:Name="txt_descricao" />
+        <Entry x:Name="txt_descricao" Placeholder="Digite a descrição..." />
 
+        <!-- Campo para inserir a quantidade do produto -->
         <Label Text="Quantidade:" />
-        <Entry x:Name="txt_quantidade" Keyboard="Numeric" />
+        <Entry x:Name="txt_quantidade" Keyboard="Numeric" Placeholder="0" />
 
+        <!-- Campo para inserir o preço unitário do produto -->
         <Label Text="Preço Unitário:" />
-        <Entry x:Name="txt_preco" Keyboard="Numeric" />
+        <Entry x:Name="txt_preco" Keyboard="Numeric" Placeholder="0,00" />
     </VerticalStackLayout>
 </ContentPage>

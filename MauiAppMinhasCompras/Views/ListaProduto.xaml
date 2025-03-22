@@ -2,40 +2,44 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppMinhasCompras.Views.ListaProduto"
-             Title="Minhas Compras">
+             Title="Lista de Produtos">
 
+    <!-- Barra de ferramentas com botões de ações -->
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Somar" Clicked="ToolbarItem_Clicked_1" />
+        <!-- Botão para adicionar um novo produto -->
         <ToolbarItem Text="Adicionar" Clicked="ToolbarItem_Clicked" />
+
+        <!-- Botão para calcular o total dos produtos -->
+        <ToolbarItem Text="Total" Clicked="ToolbarItem_Clicked_1" />
     </ContentPage.ToolbarItems>
 
-    <VerticalStackLayout>
-        <SearchBar x:Name="txt_search" 
-                   Placeholder="Busca de Produtos"
+    <VerticalStackLayout Padding="10">
+        <!-- Campo de pesquisa para filtrar produtos -->
+        <SearchBar x:Name="txt_search" Placeholder="Buscar produto..." 
                    TextChanged="txt_search_TextChanged"/>
-        <ListView x:Name="lst_produtos">
-            <ListView.Header>
-                <Grid ColumnDefinitions="*, *, *, *, *, *">
-                    <Label Grid.Column="0" Text="ID" />
-                    <Label Grid.Column="1" Text="Descrição" />
-                    <Label Grid.Column="2" Text="Preço" />
-                    <Label Grid.Column="3" Text="Qnt" />
-                    <Label Grid.Column="4" Text="Total" />
-                </Grid>
-            </ListView.Header>
+
+        <!-- Lista de produtos cadastrados -->
+        <ListView x:Name="lst_produtos"
+                  ItemSelected="lst_produtos_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="10">
+                            <!-- Nome do produto -->
+                            <Label Text="{Binding Descricao}" FontSize="20" 
+                                   VerticalOptions="Center"/>
+
+                            <!-- Valor total do produto (quantidade x preço) -->
+                            <Label Text="{Binding Total, StringFormat='R$ {0:F2}'}"
+                                   FontSize="18" 
+                                   VerticalOptions="Center" 
+                                   HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+
+                        <!-- Menu de contexto com opção para excluir um item -->
                         <ViewCell.ContextActions>
                             <MenuItem Text="Remover" Clicked="MenuItem_Clicked" />
                         </ViewCell.ContextActions>
-                        <Grid ColumnDefinitions="*, *, *, *, *, *">
-                            <Label Grid.Column="0" Text="{Binding Id}" />
-                            <Label Grid.Column="1" Text="{Binding Descricao}" />
-                            <Label Grid.Column="2" Text="{Binding Preco}" />
-                            <Label Grid.Column="3" Text="{Binding Quantidade}" />
-                            <Label Grid.Column="4" Text="{Binding Total}" />
-                        </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
